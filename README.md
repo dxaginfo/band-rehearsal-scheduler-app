@@ -1,203 +1,113 @@
 # Band Rehearsal Scheduler
 
-A comprehensive web application designed to streamline the organization of band rehearsals. It helps bands automatically schedule rehearsals, send reminders, track attendance, and suggest optimal rehearsal times based on member availability.
+A comprehensive web application for bands to schedule rehearsals, track member availability, manage setlists, and coordinate equipment.
 
-## 🎵 Features
+## Features
 
-### Core Features
-- **Rehearsal Creation and Management**
-  - Create, edit, and delete rehearsal events
-  - Set location, duration, and purpose for each rehearsal
-  - Recurring rehearsal options (weekly, bi-weekly, monthly)
-  
-- **Member Availability Tracking**
-  - Calendar-based availability submission
-  - Conflict visualization
-  - Bulk availability entry
-  
-- **Optimal Time Suggestion**
-  - Algorithm to find best rehearsal times based on member availability
-  - Priority weighting for essential members
-  
-- **Attendance Tracking**
-  - RSVP functionality
-  - Attendance history and reporting
-  - Absence notifications
-  
-- **Automated Notifications**
-  - Email/SMS reminders for upcoming rehearsals
-  - Notification preferences
-  - Custom message templates
-  
-- **Setlist Management**
-  - Create and assign setlists to rehearsals
-  - Track song practice frequency
-  - Prioritize songs based on upcoming performances
-  
-- **Equipment Checklist**
-  - Assign equipment responsibilities
-  - Track equipment availability
+- **Rehearsal Scheduling**: Create one-time or recurring rehearsal events with location details
+- **Availability Tracking**: Members can mark their availability to help find optimal rehearsal times
+- **Automated Reminders**: Email and SMS notifications for upcoming rehearsals
+- **Attendance Management**: Track who attended each rehearsal
+- **Setlist Creation**: Create and assign song setlists to specific rehearsals
+- **Equipment Coordination**: Manage who brings what equipment to each rehearsal
+- **Mobile Responsive**: Works on all devices
 
-- **Mobile Responsive Interface**
-  - Fully functional on all devices
-
-## 🚀 Technology Stack
+## Tech Stack
 
 ### Frontend
 - React.js
-- Redux for state management
-- Material-UI component library
-- Formik + Yup for form handling
-- date-fns for date/time operations
-- react-big-calendar for calendar views
-- Axios for API communication
+- Redux Toolkit for state management
+- Material-UI components
+- Formik + Yup for form validation
+- Socket.io client for real-time updates
 
 ### Backend
 - Node.js with Express
-- JWT authentication with Passport.js
+- JWT authentication
 - Prisma ORM
-- Socket.io for real-time updates
-- node-cron for scheduled tasks
-- Nodemailer with SendGrid for email
-- Twilio for SMS notifications
-
-### Database
-- PostgreSQL
+- PostgreSQL database
 - Redis for caching
+- Socket.io for real-time communication
 
-### DevOps & Deployment
-- Docker
-- GitHub Actions for CI/CD
-- Vercel (Frontend)
-- Heroku (Backend)
-- Sentry for error monitoring
-
-## 📋 Project Structure
-
-```
-band-rehearsal-scheduler/
-├── client/                 # Frontend React application
-│   ├── public/             # Static files
-│   └── src/                # React source code
-│       ├── assets/         # Images, fonts, etc.
-│       ├── components/     # Reusable components
-│       ├── contexts/       # React contexts
-│       ├── hooks/          # Custom hooks
-│       ├── pages/          # Page components
-│       ├── services/       # API services
-│       ├── store/          # Redux store
-│       └── utils/          # Utility functions
-│
-├── server/                 # Backend Node.js/Express application
-│   ├── config/             # Configuration files
-│   ├── controllers/        # Route controllers
-│   ├── middlewares/        # Express middlewares
-│   ├── models/             # Database models
-│   ├── prisma/             # Prisma schema and migrations
-│   ├── routes/             # API routes
-│   ├── services/           # Business logic services
-│   └── utils/              # Utility functions
-│
-├── docker/                 # Docker configuration
-├── .github/                # GitHub Actions workflows
-└── docs/                   # Documentation
-```
-
-## 🛠️ Setup and Installation
+## Getting Started
 
 ### Prerequisites
-- Node.js (v16+)
-- npm or yarn
-- PostgreSQL
-- Redis (optional for production)
+- Node.js (v16 or later)
+- Docker and Docker Compose (for local development)
+- PostgreSQL database
+- Redis instance
 
-### Development Setup
+### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/dxaginfo/band-rehearsal-scheduler-app.git
-   cd band-rehearsal-scheduler-app
-   ```
-
-2. **Set up environment variables**
-   ```bash
-   # In the server directory
-   cp .env.example .env
-   # Edit .env with your database credentials and API keys
-   ```
-
-3. **Install dependencies**
-   ```bash
-   # Install server dependencies
-   cd server
-   npm install
-
-   # Install client dependencies
-   cd ../client
-   npm install
-   ```
-
-4. **Database setup**
-   ```bash
-   # In the server directory
-   npx prisma migrate dev
-   npx prisma generate
-   ```
-
-5. **Start development servers**
-   ```bash
-   # Start the backend server
-   cd server
-   npm run dev
-
-   # In another terminal, start the frontend server
-   cd client
-   npm start
-   ```
-
-6. **Access the application**
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:5000
-
-### Production Deployment
-
-#### Using Docker
+1. Clone the repository:
 ```bash
-docker-compose up -d
+git clone https://github.com/dxaginfo/band-rehearsal-scheduler-app.git
+cd band-rehearsal-scheduler-app
 ```
 
-#### Manual Deployment
-- Backend: Deploy to Heroku using the provided Procfile
-- Frontend: Deploy to Vercel using the Vercel CLI or GitHub integration
+2. Set up environment variables:
+   - Create a `.env` file in the server directory based on `.env.example`
+   - Create a `.env` file in the client directory based on `.env.example`
 
-## 📄 API Documentation
-
-API documentation is available at `/api/docs` when running the server.
-
-## 🧪 Testing
-
+3. Using Docker (recommended):
 ```bash
-# Run backend tests
+docker-compose up
+```
+
+4. Manual setup:
+```bash
+# Install server dependencies
 cd server
-npm test
+npm install
 
-# Run frontend tests
-cd client
-npm test
+# Run database migrations
+npx prisma migrate dev
+
+# Start the server
+npm run dev
+
+# In a new terminal, install client dependencies
+cd ../client
+npm install
+
+# Start the client
+npm start
 ```
 
-## 🤝 Contributing
+5. Open your browser and navigate to `http://localhost:3000`
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## API Documentation
 
-## 📜 License
+API documentation is available at `/api/docs` when the server is running.
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Project Structure
 
-## 📞 Contact
+```
+├── client/                # React frontend
+│   ├── public/            # Static files
+│   └── src/               # React source code
+│       ├── components/    # Reusable components
+│       ├── pages/         # Page components
+│       ├── store/         # Redux store and slices
+│       ├── utils/         # Utility functions
+│       └── App.js         # Main App component
+├── server/                # Node.js backend
+│   ├── middlewares/       # Express middlewares
+│   ├── prisma/            # Prisma schema and migrations
+│   ├── routes/            # API routes
+│   ├── services/          # Business logic
+│   └── index.js           # Server entry point
+└── docker-compose.yml     # Docker configuration
+```
 
-Project Link: [https://github.com/dxaginfo/band-rehearsal-scheduler-app](https://github.com/dxaginfo/band-rehearsal-scheduler-app)
+## Security
+
+- JWT-based authentication with proper token expiration
+- Password hashing with bcrypt
+- Input validation on all API endpoints
+- HTTPS enforcement in production
+- Role-based access control
+
+## License
+
+This project is licensed under the MIT License.
